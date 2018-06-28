@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>Login page</title>
+</head>
+
+<body>
+<h1>Humital Fellowship</h1>
+
+<p> Enter Username and Password </p>
+<form name="login">
+    Username<input type="text" name="userid"/>
+    Password<input type="password" name="pswrd"/><BR>
+    
+    <input type="button" onclick="check(this.form)" value="Login"/><BR>
+        <INPUT type="reset" value="cancel"/> 
+</form>		
+ 
+ 
+ <script language="javascript">
+ function check(form)
+ {
+ if(form.userid.value == "naveen" && Form.pswrd.value == "humital")
+ 
+    window.open('index.html')
+ }
+ else
+ {
+  alert("invalid password")
+ 
+ }
+ 
+ </script>
+ </body>
+</html>

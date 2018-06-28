@@ -1,0 +1,66 @@
+<html>
+<body>
+
+name= naveen</br>
+address= rajahmundry</br>
+email= naveen.arlapalli001@gmail.com</br>
+phone= 9790458419</br>
+<select id="eduselector" onchange="myFunction()">
+<option value='1'>x</option>
+<option value='2'>x11</option>
+<option value='3'>ug</option>
+
+</select>
+
+<table border=1>
+<tr>
+<th>education</th>
+
+<th>year</th>
+
+<th>sub</th>
+
+<th>marks</th>
+</tr>
+<tr id="1" style="display: none;">
+<td>x</td>
+
+<td>2012</td>
+
+<th>board</th>
+
+<td>9</td>
+</tr>
+<tr id="2" style="display: none;">
+<td>X11</td>
+
+<td>2014</td>
+
+<th>board</th>
+
+<th>87.3</th>
+</tr>
+<tr id="3" style="display: none;">
+<td>ug</td>
+
+<td>2018</td>
+
+<th>university</th>
+
+<th>7.4</th>
+</tr>
+
+</table>
+ 
+</body>
+<script type="text/javascript">
+function myFunction()
+{
+  document.getElementById('1').style.display = "";
+  document.getElementById('2').style.display = "";
+  document.getElementById('3').style.display = "";
+  var e = document.getElementById('eduselector').value;
+  document.getElementById(e).style.display="none";
+}
+</script>
+</html>

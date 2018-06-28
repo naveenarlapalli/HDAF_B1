@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Pie chart</title>
+</head>
+
+<body>
+<div id="chart"></div>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+var w = 400;
+var h = 400;
+var r = h/2;
+var color = d3.scale.category20c();
+
+var data = [
+        {label:"Uttar Pradesh", value:16.49},
+        {label:"Maharashtra", value:9.28},
+        {label:"Bihar", value:8.58},
+        {label:"West Bengal", value:7.55},
+        {label:"Madhya Pradesh", value:6},
+        {label:"Tamil Nadu", value:5.96},
+        {label:"Rajasthan", value:5.67},
+        {label:"Karnataka", value:5.05},
+        {label:"Gujarat", value:5},
+        {label:"Andhra Pradesh", value:4.08},
+        {label:"Odisha", value:3.47},
+        {label:"Telangana", value:2.97},
+        {label:"Kerala", value:2.76},
+        {label:"Jharkhand", value:2.72},
+        {label:"Assam", value:2.58},
+        {label:"Punjab", value:2.3},
+        {label:"Chhattisgarh", value:2.11},
+        {label:"Haryana", value:2.09},
+        {label:"Jammu and Kashmir", value:1.04},
+        {label:"Uttarakhand", value:0.84},
+        {label:"Himachal Pradesh", value:0.57},
+        {label:"Tripura", value:0.3},
+        {label:"Meghalaya", value:0.24},
+        {label:"Manipur", value:0.22},
+        {label:"Nagaland", value:0.16},
+        {label:"Goa", value:0.12},
+        {label:"Arunachal Pradesh", value:0.11},
+        {label:"Mizoram", value:0.09},
+        {label:"Sikkim", value:0.05},
+        {label:"Delhi", value:1.38},
+        {label:"Puducherry", value:0.1},
+        {label:"Chandigarh", value:0.09},
+        {label:"Andaman and Nicobar Islands", value:0.03},
+        {label:"Dadra and Nagar Haveli", value:0.03},
+        {label:"Daman and Diu", value:0.02},
+        {label:"Lakshadweep", value:0.01}
+];
+
+
+var vis = d3.select('#chart').append("svg:svg").data([data]).attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + r + "," + r + ")");
+var pie = d3.layout.pie().value(function(d){return d.value;});
+
+// declare an arc generator function
+var arc = d3.svg.arc().outerRadius(r);
+
+// select paths, use arc generator to draw
+var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g").attr("class", "slice");
+arcs.append("svg:path")
+    .attr("fill", function(d, i){
+        return color(i);
+    })
+    .attr("d", function (d) {
+        // log the result of the arc generator to show how cool it is :)
+        console.log(arc(d));
+        return arc(d);
+    });
+
+// add the text
+arcs.append("svg:text").attr("transform", function(d){
+      d.innerRadius = 0;
+      d.outerRadius = r;
+    return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "middle").text( function(d, i) {
+    return data[i].label;}
+    );
+    </script>
+</body>
+</head>
+</html>
